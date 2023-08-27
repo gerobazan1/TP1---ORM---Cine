@@ -1,16 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using TP1ORM.Application.Interfaces.IServices;
+using TP1ORM.Application.Services;
 using TP1ORM.Domain.Entities;
 using TP1ORM.Presentation.UI;
 
 namespace TP1ORM.Presentation.Controller
 {
-    public class PeliculaController
+    public class FuncionesController
     {
-        private readonly IPeliculaService peliculaService;
-        public PeliculaController(IPeliculaService service)
+        private readonly IPeliculaService _peliculaService;
+        private readonly IFuncionesService _funcionesService;
+
+        public FuncionesController(IPeliculaService peliculaService, IFuncionesService funcionesService)
         {
-            peliculaService = service;
+            _peliculaService = peliculaService;
+            _funcionesService = funcionesService;
         }
         public void MostrarPeliculas()
         {
@@ -19,22 +24,22 @@ namespace TP1ORM.Presentation.Controller
             Console.WriteLine("");
             Console.WriteLine("     Peliculas en cartelera: ");
             Console.WriteLine("");
-            var listaPeliculas = peliculaService.ListarPeliculas();
+            var listaPeliculas = _peliculaService.ListarPeliculas();
             foreach (Peliculas pelicula in listaPeliculas)
             {
                 Console.WriteLine("     " + pelicula.PeliculaId + ". " + pelicula.Titulo);
             }
         }
-        public Peliculas VerInformacionPelicula(string nombrePelicula)
+        public List<Peliculas> VerFuncionesPelicula(string nombrePelicula)
         {
             try
             {
-                return peliculaService.BuscarPelicula(nombrePelicula);
+                return _funcionesService.MostrarFunciones(nombrePelicula);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("\n    Ocurrió un error: " + ex.Message);
-                return new Peliculas { PeliculaId = -1, Titulo = "Error de búsqueda" };
+                return new List<Peliculas>();
             }
         }
     }

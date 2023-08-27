@@ -12,7 +12,6 @@ namespace TP1ORM.Application.Services
         {
             queryPeliculas = query;
         }
-
         public List<Peliculas> ListarPeliculas()
         {
             return queryPeliculas.ListarPeliculas();
@@ -20,10 +19,6 @@ namespace TP1ORM.Application.Services
         public Peliculas BuscarPelicula(string titulo)
         {
             return queryPeliculas.BuscarPelicula(titulo);
-        }
-        public List<Peliculas> BuscarPeliculas(string titulo)
-        {
-            return queryPeliculas.ListarPeliculas();
         }
     }
 }

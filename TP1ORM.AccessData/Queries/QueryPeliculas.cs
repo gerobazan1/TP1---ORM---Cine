@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using TP1ORM.Application.Interfaces.IQueries;
 using TP1ORM.Domain.Entities;
@@ -21,6 +22,11 @@ namespace TP1ORM.AccessData.Queries
         public Peliculas BuscarPelicula(string titulo)
         {
             return context.Peliculas.Where(l => l.Titulo == titulo).FirstOrDefault();
+        }
+
+        public List<Peliculas> MostrarFunciones(string title)
+        {
+            return context.Peliculas.Include(p => p.FuncionesNavigator).Where(p => p.Titulo.Equals(title)).ToList();
         }
     }
 }

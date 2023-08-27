@@ -14,6 +14,7 @@ namespace TP1ORM.Presentation.UI
             Console.WriteLine("    ║  - Ingrese un número según lo que desea realizar.                                                            ║");
             Console.WriteLine("    ║                                                                                                              ║");
             Console.WriteLine("    ║  (1) Ver Peliculas disponibles.                                                                              ║");
+            Console.WriteLine("    ║  (2) Ver Funciones de una pelicula.                                                                          ║");
             Console.WriteLine("    ║                                                                                                              ║");
             Console.WriteLine("    ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
@@ -32,6 +33,14 @@ namespace TP1ORM.Presentation.UI
             Console.WriteLine("");
             Console.WriteLine("    ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
             Console.WriteLine("    ║                                         Información sobre la PELICULA                                        ║");
+            Console.WriteLine("    ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+        }
+        public static void FuncionesPelicula()
+        {
+            Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("    ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("    ║                                              Funciones de la PELICULA                                        ║");
             Console.WriteLine("    ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
     }

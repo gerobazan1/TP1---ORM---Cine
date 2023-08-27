@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TP1ORM.AccessData;
 using TP1ORM.AccessData.Queries;
+using TP1ORM.AccessData;
 using TP1ORM.Application.Interfaces.IQueries;
 using TP1ORM.Application.Interfaces.IServices;
 using TP1ORM.Application.Services;
+using TP1ORM.Presentation.Controller;
 
 namespace TP1ORM.Presentation
 {
@@ -14,7 +15,11 @@ namespace TP1ORM.Presentation
             ServiceProvider serviceProvider = new ServiceCollection()
                 .AddTransient<IQueryPeliculas, QueryPeliculas>()
                 .AddTransient<IPeliculaService, PeliculaService>()
+                .AddTransient<IFuncionesService, FuncionesService>()
                 .AddTransient<CineContext>()
+                .AddTransient<PeliculaController>()
+                .AddTransient<FuncionesController>()
+
                 .AddTransient<Menu>()
                 .BuildServiceProvider();
 
@@ -23,25 +28,3 @@ namespace TP1ORM.Presentation
         }
     }
 }
-
-//otra opcion de inyeccion de dependencias
-//namespace TP1ORM
-//{
-//    public class Program
-//    {
-//        public static void Main(string[] args)
-//        {
-
-//            using (var context = new CineContext())
-//            {
-//                // Crear instancias de implementaciones necesarias
-//                IQueryPeliculas queryPeliculas = new QueryPeliculas(context);
-//                IPeliculaService peliculaService = new PeliculaService(queryPeliculas);
-//                Menu menu = new Menu(peliculaService);
-
-//                menu.Desplegar();
-//            }
-//        }
-//    }
-//}
-

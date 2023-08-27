@@ -49,11 +49,19 @@ namespace TP1ORM.Application.Validaciones
         {
             while (!Regex.IsMatch(cadena, @"^[a-zA-Z]+$"))
             {
-                Console.WriteLine("\n Por favor ingrese solo letras.");
+                Console.WriteLine("\n     Por favor ingrese solo letras.");
                 cadena = Console.ReadLine();
             }
             return cadena;
         }
+
+
+        public static bool SoloLetras(string cadena)
+        {
+            return Regex.IsMatch(cadena, @"^[a-zA-Z]+$");
+        }
+
+
         public static string Email(string cadena)
         {
             while (!Regex.IsMatch(cadena, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
